@@ -1,17 +1,23 @@
-import React from 'react'
-import './ExpenseItem.css';
+/*import React from 'react'*/
+import './ExpenseItem.css'
+import ExpenseDate from './ExpenseDate'
+import ExpenseDetails from './ExpenseDetails'
 
 export default function ExpenseItem(props) {
 
 
     return (
         <div className='expense-item'>
-            <div>{props.Date.toISOString()}</div>
+            <ExpenseDate Date={props.Date} />
             <div className='expense-item_description'>
-                <h2>{props.Title}</h2>
-                <div className='expense-item_price'>{props.Amount}</div>
-                <div className="expense-Expenditure">{props.LocationOfExpenditure}</div>
+                <ExpenseDetails title={props.title} /></div>
+            <div className='expense-item_price'>
+                <ExpenseDetails Amount={props.Amount} />
+            </div>
+            <div className="expense-Expenditure">
+                <ExpenseDetails LocationOfExpenditure={props.LocationOfExpenditure} />
             </div>
         </div>
+
     )
 }

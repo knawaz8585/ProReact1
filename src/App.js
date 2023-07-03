@@ -33,13 +33,29 @@ function App() {
 
   return (
     <>
-      <ExpenseItem title={Expense[0].title} Amount={Expense[0].Amount} Date={Expense[0].Date} LocationOfExpenditure={Expense[0].LocationOfExpenditure} />
+      <ExpenseItem
+        title={Expense[0].title}
+        Amount={Expense[0].Amount}
+        Date={Expense[0].Date}
+        LocationOfExpenditure={Expense[0].LocationOfExpenditure} />
 
-      <ExpenseItem title={Expense[1].title} Amount={Expense[1].Amount} Date={Expense[1].Date} LocationOfExpenditure={Expense[1].LocationOfExpenditure} />
+      <ExpenseItem
+        title={Expense[1].title}
+        Amount={Expense[1].Amount}
+        Date={Expense[1].Date}
+        LocationOfExpenditure={Expense[1].LocationOfExpenditure} />
 
-      <ExpenseItem title={Expense[2].title} Amount={Expense[2].Amount} Date={Expense[2].Date} LocationOfExpenditure={Expense[2].LocationOfExpenditure} />
+      <ExpenseItem
+        title={Expense[2].title}
+        Amount={Expense[2].Amount}
+        Date={Expense[2].Date}
+        LocationOfExpenditure={Expense[2].LocationOfExpenditure} />
 
-      <ExpenseItem title={Expense[3].title} Amount={Expense[3].Amount} Date={Expense[3].Date} LocationOfExpenditure={Expense[3].LocationOfExpenditure} />
+      <ExpenseItem
+        title={Expense[3].title}
+        Amount={Expense[3].Amount}
+        Date={Expense[3].Date}
+        LocationOfExpenditure={Expense[3].LocationOfExpenditure} />
 
     </>
   )
