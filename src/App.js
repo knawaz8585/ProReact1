@@ -1,65 +1,84 @@
 import ExpenseItem from "./Components/ExpenseItem";
-
+import React, { useState } from 'react';
 
 function App() {
-  const Expense = [{
-    id: 1,
-    title: "Car Insuranse",
-    Amount: 2200,
-    Date: new Date(2023, 7, 2),
-    LocationOfExpenditure: "Suraksha"
-  },
-  {
-    id: 2,
-    title: "Food",
-    Amount: 15000,
-    Date: new Date(2023, 7, 15),
-    LocationOfExpenditure: "For Living"
-  },
-  {
-    id: 3,
-    title: "Building-Maintain",
-    Amount: 5000,
-    Date: new Date(2023, 7, 1),
-    LocationOfExpenditure: "For Living"
-  },
-  {
-    id: 4,
-    title: "Travelling",
-    Amount: 3000,
-    Date: new Date(2023, 7, 1),
-    LocationOfExpenditure: "Going to Job"
-  }]
+  const [expenses, setExpenses] = useState([
+    {
+      id: 1,
+      title: 'Car Insurance',
+      Amount: 2200,
+      Date: new Date(2023, 7, 2),
+      LocationOfExpenditure: 'Suraksha'
+    },
+    {
+      id: 2,
+      title: "Food",
+      Amount: 15000,
+      Date: new Date(2023, 7, 15),
+      LocationOfExpenditure: "For Living"
+    },
+    {
+      id: 3,
+      title: "Building-Maintain",
+      Amount: 5000,
+      Date: new Date(2023, 7, 1),
+      LocationOfExpenditure: "For Living"
+    },
+    {
+      id: 4,
+      title: "Travelling",
+      Amount: 3000,
+      Date: new Date(2023, 7, 1),
+      LocationOfExpenditure: "Going to Job"
+    }
+  ]);
+
+  const handleDeleteExpense = (expenseId) => {
+    setExpenses((prevExpenses) =>
+      prevExpenses.filter((expense) => expense.id !== expenseId)
+    );
+  };
+
+  const handleAmountUpdate = (expenseId) => {
+    setExpenses((prevExpenses) =>
+      prevExpenses.map((expense) => {
+        if (expense.id === expenseId) {
+          return { ...expense, Amount: "$" + 100 };
+        }
+        return expense;
+      })
+    );
+  };
+
+
+  const handleTitleChange = (expenseId, newTitle) => {
+    setExpenses((prevExpenses) =>
+      prevExpenses.map((expense) => {
+        if (expense.id === expenseId) {
+          return { ...expense, title: newTitle };
+        }
+        return expense;
+      })
+    );
+  };
 
   return (
     <>
-      <ExpenseItem
-        title={Expense[0].title}
-        Amount={Expense[0].Amount}
-        Date={Expense[0].Date}
-        LocationOfExpenditure={Expense[0].LocationOfExpenditure} />
-
-      <ExpenseItem
-        title={Expense[1].title}
-        Amount={Expense[1].Amount}
-        Date={Expense[1].Date}
-        LocationOfExpenditure={Expense[1].LocationOfExpenditure} />
-
-      <ExpenseItem
-        title={Expense[2].title}
-        Amount={Expense[2].Amount}
-        Date={Expense[2].Date}
-        LocationOfExpenditure={Expense[2].LocationOfExpenditure} />
-
-      <ExpenseItem
-        title={Expense[3].title}
-        Amount={Expense[3].Amount}
-        Date={Expense[3].Date}
-        LocationOfExpenditure={Expense[3].LocationOfExpenditure} />
-
+      {expenses.map((expense) => (
+        <ExpenseItem
+          key={expense.id}
+          id={expense.id}
+          title={expense.title}
+          Amount={expense.Amount}
+          Date={expense.Date}
+          LocationOfExpenditure={expense.LocationOfExpenditure}
+          onDelete={handleDeleteExpense}
+          onAmount={handleAmountUpdate}
+          onTitleChange={handleTitleChange}
+        />
+      ))}
     </>
-  )
-
+  );
 }
 
 export default App;
