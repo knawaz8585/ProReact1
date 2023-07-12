@@ -1,5 +1,6 @@
 import ExpenseItem from "./Components/ExpenseItem";
 import React, { useState } from 'react';
+import ExpenseForm from "./Components/ExpenseForm";
 
 function App() {
   const [expenses, setExpenses] = useState([
@@ -75,8 +76,11 @@ function App() {
           onDelete={handleDeleteExpense}
           onAmount={handleAmountUpdate}
           onTitleChange={handleTitleChange}
+
         />
+
       ))}
+      <ExpenseForm />
     </>
   );
 }
