@@ -20,4 +20,4 @@ const amountupdate = () => {
     props.onAmount(props.id)
 };
 
-<button onClick={amountupdate}>Update Amount</button
+<button onClick={amountupdate}>Update Amount</button>

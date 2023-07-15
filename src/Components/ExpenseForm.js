@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import './ExpenseForm.css';
 
+
+
+
 export default function ExpenseForm() {
     const [expenses, setExpenses] = useState([]);
     const [title, setTitle] = useState('');
     const [amount, setAmount] = useState('');
     const [date, setDate] = useState('');
+
+
+
 
     const handleTitleChange = (event) => {
         setTitle(event.target.value);
@@ -34,28 +40,29 @@ export default function ExpenseForm() {
 
     return (
         <div>
-            <div className='form'>
-                <label htmlFor="titleInput">Title</label>
-                <input
-                    type="text" id="titleInput" placeholder="Enter the expense title" value={title} onChange={handleTitleChange} />
 
-                <label htmlFor="amountInput">Amount</label>
-                <input type="text" id="amountInput" placeholder="Enter the expense amount" value={amount} onChange={handleAmountChange} />
+
+            <div className='form'>
+
 
                 <label htmlFor="dateInput">Date</label>
-                <input type="text" id="dateInput" placeholder="Enter the expense date" value={date} onChange={handleDateChange} />
+                <input type="date" id="dateInput" placeholder="Enter the expense date" value={date} onChange={handleDateChange} />
+
+                <label htmlFor="titleInput">Title</label>
+                <input type="text" id="titleInput" placeholder="Enter the expense title" value={title} onChange={handleTitleChange} />
+
+                <label htmlFor="amountInput">Amount</label>
+                <input type="Number" id="amountInput" placeholder="Enter the expense amount" value={amount} onChange={handleAmountChange} />
 
 
                 <button className="AddButton" onClick={handleAddExpense}>Add Expense</button>
+
             </div>
 
             <div className='expenses'>
-                <h2>Expenses</h2>
                 {expenses.map((expense, index) => (
                     <div key={index}>
-                        <p>Title: {expense.title}</p>
-                        <p>Amount: {expense.amount}</p>
-                        <p>Date: {expense.date}</p>
+                        <p className='input-box'> <p className='date'> {expense.date}</p> <p className='title'>{expense.title}</p> <p className='amount'>{expense.amount}</p>  </p>
                     </div>
                 ))}
             </div>
